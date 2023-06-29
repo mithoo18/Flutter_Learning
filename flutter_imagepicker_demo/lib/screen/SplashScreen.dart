@@ -1,5 +1,7 @@
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_imagepicker_demo/constant/Constant.dart';
+import '/constant/Constant.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -31,6 +33,7 @@ class SplashScreenState extends State<SplashScreen>
     );
     animation =
         new CurvedAnimation(parent: animationController, curve: Curves.easeOut);
+
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
 
@@ -53,7 +56,7 @@ class SplashScreenState extends State<SplashScreen>
               Padding(
                 padding: EdgeInsets.only(bottom: 30.0),
                 child: new Image.asset(
-                  '',
+                  'assets/images/ic_powered_by.png',
                   height: 25.0,
                   fit: BoxFit.scaleDown,
                 ),
@@ -64,7 +67,7 @@ class SplashScreenState extends State<SplashScreen>
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Image.asset(
-                '',
+                'assets/images/ic_flutter_devs_logo.png',
                 width: animation.value * 250,
                 height: animation.value * 250,
               ),

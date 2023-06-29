@@ -1,14 +1,22 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_imagepicker_demo/constant/Constant.dart';
-import 'package:flutter_imagepicker_demo/screen/SplashScreen.dart';
+import 'constant/Constant.dart';
+import 'screen/CameraHomeScreen.dart';
+import 'screen/HomeScreen.dart';
+import 'screen/SplashScreen.dart';
 
 List<CameraDescription> cameras;
-Future<Null> main() async {
-  try {} on CameraException catch (e) {}
 
-  runApp(MaterialApp(
+Future<Null> main() async {
+  try {
+    cameras = await availableCameras();
+  } on CameraException catch (e) {
+    //logError(e.code, e.description);
+  }
+
+  runApp(
+    MaterialApp(
       title: "Camera App",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -18,5 +26,7 @@ Future<Null> main() async {
       routes: <String, WidgetBuilder>{
         HOME_SCREEN: (BuildContext context) => HomeScreen(),
         CAMERA_SCREEN: (BuildContext context) => CameraHomeScreen(cameras),
-      }));
+      },
+    ),
+  );
 }

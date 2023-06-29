@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'dart:ffi';
 import 'dart:io';
+
+import 'package:camera/camera.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 
 class CameraHomeScreen extends StatefulWidget {
